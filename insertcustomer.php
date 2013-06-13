@@ -9,8 +9,6 @@ if (!mysqli_query($con,$sql))
   {
   die('Error: ' . mysqli_error($con));
   }
-printf ("New Record has id %d.\n", $mysqli->insert_id);
-echo "1 record added";
-
+printf ("New Record has id %d.\n", mysqli_insert_id($con));
 mysqli_close($con);
 ?>
