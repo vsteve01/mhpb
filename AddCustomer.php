@@ -13,7 +13,7 @@ Address: <input type="text" name="cstAddr1"><br>
 City: <input type="text" name="cstCityLid"><br>
 <!--State: <input type="text" name="cstStateLid"><br> -->
 State: 
-<Select name="State">
+<Select name="cstStateLid">
 <option value="1" selected>SA</option>
 <option value="2">VIC</option>
 <option value="3">NSW</option>
@@ -22,7 +22,6 @@ State:
 <option value="6">TAS</option>
 <option value="7">ACT</option>
 <option value="8">QLD</option>
-
 </select><br>
 Postcode: <input type="text" name="cstZip"><br>
 Home Phone: <input type="text" name="cstHphone"><br>
