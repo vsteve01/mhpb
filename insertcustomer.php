@@ -40,6 +40,12 @@ $row = mysqli_fetch_array($result);
 <tr>
 <td><input name="cstStateLid" type="text" value="<?php echo $row['cstStateLid'];?>" maxlength="100" id="cstStateLid" />
 </td>
+<td><input name="cstZip" type="text" value="<?php echo $row['cstZip'];?>" maxlength="6" id="cstZip" />
+</td>
+</tr>
+<tr>
+<td>
+</td>
 </tr>
 </TABLE>
 <?php
