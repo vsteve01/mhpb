@@ -1,3 +1,4 @@
+<!DOCTYPE html> 
 <html>
 <Head><Title>Home
 </title>
@@ -9,8 +10,17 @@
 include 'connect.php';
 
 $result = mysqli_query($con,"select * from customer where cstid = 54");
-
 $row = mysqli_fetch_array($result);
+
+$suburbid=$row['cstCityLid'];
+$referralid=$row['cstReferredLid'];
+
+$subresult = mysqli_query($con,"select * from Suburb where SubId = $suburbid");
+$subrow = mysqli_fetch_array($subresult);
+
+$refresult = mysqli_query($con,"select * from Referals where RefId = $referralid");
+$refrow = mysqli_fetch_array($refresult);
+
 ?>
 <TABLE>
 <tr>
@@ -20,7 +30,7 @@ $row = mysqli_fetch_array($result);
 </td>
 </tr>
 <tr>
-<td><input name="cstFName" type="text" value="<?php echo $row['cstFName'];?>" maxlength="100" id="cstFName" />
+<td><input name="cstFName" type="text" align="middle" value="<?php echo $row['cstFName'];?>" maxlength="100" id="cstFName" />
 </td>
 <td><input name="cstLName" type="text" value="<?php echo $row['cstLName'];?>" maxlength="100" id="cstLName" />
 </td>
@@ -28,23 +38,24 @@ $row = mysqli_fetch_array($result);
 <tr>
 <td>Address
 </td>
-<td>Postcode
+<td>Suburb
 </td>
 </tr>
 <tr>
 <td><input name="cstAddr1" type="text" value="<?php echo $row['cstAddr1'];?>" maxlength="100" id="cstAddr1" />
 </td>
-<td><input name="cstZip" type="text" value="<?php echo $row['cstZip'];?>" maxle
-ngth="6" id="cstZip" />
+<td><input name="SubName" type="text" value="<?php echo $subrow['SubName'];?>" maxlength="100" id="SubName" readonly />
+</td>
+<td>Edit Suburb
 </td>
 </tr>
 <tr>
-<td>Suburb</td>
+<td>Postcode</td>
 <td>State
 </td></tr>
 <tr>
-<td><input name="cstCityLid" type="text" value="<?php echo $row['cstCityLid'];?>" maxlength="100" id="cstCityLid" />
-<td><input name="cstStateLid" type="text" value="<?php echo $row['cstStateLid'];?>" maxlength="100" id="cstStateLid" />
+<td><input name="SubZip" type="text" value="<?php echo $subrow['SubZip'];?>" maxlength="6" id="SubZip" readonly />
+<td><input name="SubState" type="text" value="<?php echo $subrow['SubState'];?>" maxlength="100" id="SubState" readonly />
 </td>
 </td>
 </tr>
@@ -67,7 +78,7 @@ ngth="6" id="cstZip" />
 <tr>
 <td><input name="cstEmail" type="text" value="<?php echo $row['cstEmail'];?>" maxlength="14" id="cstEmail" />
 </td>
-<td><input name="cstReferredLid" type="text" value="<?php echo $row['cstReferredLid'];?>" maxlength="14" id="cstReferredLid" />
+<td><input name="ReferredLid" type="text" value="<?php echo $refrow['RefType'];?>" maxlength="14" id="cstReferredLid" />
 </td>
 </tr>
 <tr>
@@ -95,7 +106,11 @@ ngth="6" id="cstZip" />
 </TABLE>
 <table>
 <tr>
-<td>Entry Created: <?php echo date("d M Y",strtotime($row['cstDateAdded']));?> by: <?php echo $row['cstUserAdded'];?> Last Updated: <?php echo date("d M Y",strtotime($row['cstDateEdited']));?> by: <?php echo $row['cstUserEdited'];?>
+<td>Entry Created: <?php echo date("d M Y",strtotime($row['cstDateAdded']));?> by: <?php echo $row['cstUserAdded'];?> 
+</td>
+</tr>
+<tr>
+<td>Last Updated: <?php echo date("d M Y",strtotime($row['cstDateEdited']));?> by: <?php echo $row['cstUserEdited'];?>
 </td>
 </tr>
 </table>
