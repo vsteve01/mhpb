@@ -28,23 +28,24 @@ $row = mysqli_fetch_array($result);
 <tr>
 <td>Address
 </td>
-<td>Suburb
+<td>Postcode
 </td>
 </tr>
 <tr>
 <td><input name="cstAddr1" type="text" value="<?php echo $row['cstAddr1'];?>" maxlength="100" id="cstAddr1" />
 </td>
-<td><input name="cstCityLid" type="text" value="<?php echo $row['cstCityLid'];?>" maxlength="100" id="cstCityLid" />
+<td><input name="cstZip" type="text" value="<?php echo $row['cstZip'];?>" maxle
+ngth="6" id="cstZip" />
 </td>
 </tr>
 <tr>
-<td>State</td>
-<td>Postcode
+<td>Suburb</td>
+<td>State
 </td></tr>
 <tr>
+<td><input name="cstCityLid" type="text" value="<?php echo $row['cstCityLid'];?>" maxlength="100" id="cstCityLid" />
 <td><input name="cstStateLid" type="text" value="<?php echo $row['cstStateLid'];?>" maxlength="100" id="cstStateLid" />
 </td>
-<td><input name="cstZip" type="text" value="<?php echo $row['cstZip'];?>" maxlength="6" id="cstZip" />
 </td>
 </tr>
 <tr>
@@ -59,12 +60,47 @@ $row = mysqli_fetch_array($result);
 </tr>
 <tr>
 <td>Email
-</td></tr>
+</td>
+<td>Referral
+</td>
+</tr>
 <tr>
 <td><input name="cstEmail" type="text" value="<?php echo $row['cstEmail'];?>" maxlength="14" id="cstEmail" />
 </td>
+<td><input name="cstReferredLid" type="text" value="<?php echo $row['cstReferredLid'];?>" maxlength="14" id="cstReferredLid" />
+</td>
+</tr>
+<tr>
+<td>Alternate Contact
+</td>
+<td>Alternate Number
+</td>
+</tr>
+<tr>
+<td><input name="cstAltPerson" type="text" value="<?php echo $row['cstAltPerson'];?>" maxlength="40" id="cstAltPerson" />
+</td>
+<td><input name="cstAphone" type="text" value="<?php echo $row['cstAphone'];?>" maxlength="14" id="cstAphone" />
+</td>
+</tr>
+<tr>
+<td>Notes
+</td>
+</tr>
+</table>
+<table>
+<tr>
+<td><textarea name="cstNotes" rows="5" cols="100" style="width:415px; height:150px;" maxlength="2000" id="cstNotes" /><?php echo $row['cstNotes'];?></textarea>
+</td>
 </tr>
 </TABLE>
+<table>
+<tr>
+<td>Entry Created: <?php echo date("d M Y",strtotime($row['cstDateAdded']));?> by: <?php echo $row['cstUserAdded'];?> Last Updated: <?php echo date("d M Y",strtotime($row['cstDateEdited']));?> by: <?php echo $row['cstUserEdited'];?>
+</td>
+</tr>
+</table>
+
+
 <?php
 mysqli_close($con);
 ?>
