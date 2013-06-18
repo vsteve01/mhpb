@@ -9,7 +9,7 @@
 <?php
 include 'connect.php';
 
-$result = mysqli_query($con,"select * from customer where cstid = 54");
+$result = mysqli_query($con,"select * from customer where cstid = 70");
 $row = mysqli_fetch_array($result);
 
 $suburbid=$row['cstCityLid'];
@@ -20,6 +20,9 @@ $subrow = mysqli_fetch_array($subresult);
 
 $refresult = mysqli_query($con,"select * from Referals where RefId = $referralid");
 $refrow = mysqli_fetch_array($refresult);
+
+$refresult = mysqli_query($con,"select RefType from Referals");
+$reflist = mysqli_fetch_array($refresult);
 
 ?>
 <TABLE>
@@ -46,7 +49,7 @@ $refrow = mysqli_fetch_array($refresult);
 </td>
 <td><input name="SubName" type="text" value="<?php echo $subrow['SubName'];?>" maxlength="100" id="SubName" readonly />
 </td>
-<td>Edit Suburb
+<td><button class="btn btn-primary" type="button" onclick="window.location.href='EditSuburb.php'">Edit Suburb</button>
 </td>
 </tr>
 <tr>
@@ -78,7 +81,16 @@ $refrow = mysqli_fetch_array($refresult);
 <tr>
 <td><input name="cstEmail" type="text" value="<?php echo $row['cstEmail'];?>" maxlength="14" id="cstEmail" />
 </td>
-<td><input name="ReferredLid" type="text" value="<?php echo $refrow['RefType'];?>" maxlength="14" id="cstReferredLid" />
+<td>
+<select name="cstReferralId">
+<option selected ="Selected"><?php echo $refrow['RefType'];?></option>
+<?php
+while($reflist = mysqli_fetch_array($refresult)) {
+            echo '<option value="'.$reflist['RefId'].'">'. $reflist['RefType'].'</option>';
+        }
+?>
+</select>
+
 </td>
 </tr>
 <tr>
@@ -114,8 +126,6 @@ $refrow = mysqli_fetch_array($refresult);
 </td>
 </tr>
 </table>
-
-
 <?php
 mysqli_close($con);
 ?>
