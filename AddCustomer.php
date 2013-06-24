@@ -13,7 +13,7 @@ include 'connect.php';
 $subresult = mysqli_query($con,"select * from Suburb where SubState='SA' Group By SubName order by SubName");
 
 
-$refresult = mysqli_query($con,"select RefType from Referals");
+$refresult = mysqli_query($con,"select * from Referals");
 $reflist = mysqli_fetch_array($refresult);
 
 ?>
@@ -83,7 +83,7 @@ while($subrow = mysqli_fetch_array($subresult)) {
 </td>
 <td>
 <select name="cstReferralId">
-<option selected ="Selected"><?php echo $refrow['RefType'];?></option>
+<option selected ="Selected"></option>
 <?php
 while($reflist = mysqli_fetch_array($refresult)) {
             echo '<option value="'.$reflist['RefId'].'">'. $reflist['RefType'].'</option>';

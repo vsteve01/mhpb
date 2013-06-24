@@ -10,7 +10,6 @@ Home
 <?php
 include 'connect.php';
 
-
 $sql="insert into customer (cstFName, cstLName, cstAddr1, cstCityLid, cstHphone, cstMphone, cstEmail, cstReferredLid, cstAltPerson, cstAphone, cstNotes)
 values
 ('$_POST[cstFName]','$_POST[cstLName]','$_POST[cstAddr1]','$_POST[cstCityLid]','$_POST[cstHphone]','$_POST[cstMphone]','$_POST[cstEmail]','$_POST[cstReferralId]','$_POST[cstAltPerson]','$_POST[cstAphone]','$_POST[cstNotes]')";
